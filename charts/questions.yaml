@@ -45,9 +45,9 @@ questions:
     type: multiline
     group: "Auth Access Endpoint"
 # EC2
-- variable: nodepools.0.instanceType
+- variable: nodepools.0.quantity
   label: "ControlPlane Instance Type"
-  default: t3a.quantity
+  default: 1
   description: "Numbers of instances"
   type: enum
   required: true
@@ -69,9 +69,9 @@ questions:
   - t3a.xlarge
   show_if: cloudprovider=amazonec2
   group: "Nodepool controlplane"
-- variable: nodepools.0.instanceType
+- variable: nodepools.1.quantity
   label: "ControlPlane Instance Type"
-  default: t3a.quantity
+  default: 1
   description: "Numbers of instances"
   type: enum
   required: true
