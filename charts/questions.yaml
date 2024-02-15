@@ -46,9 +46,9 @@ questions:
     group: "Auth Access Endpoint"
 # EC2
 - variable: nodepools.0.quantity
-  label: "ControlPlane Instance Type"
+  label: "Number of instance"
   default: 1
-  description: "Numbers of instances"
+  description:
   type: enum
   required: true
   options:
@@ -58,9 +58,9 @@ questions:
   show_if: cloudprovider=amazonec2
   group: "Nodepool controlplane"
 - variable: nodepools.0.instanceType
-  label: "ControlPlane Instance Type"
+  label: "AWS Instance Type"
   default: t3a.medium
-  description: "Instance type of controlplane"
+  description: 
   type: enum
   required: true
   options:
@@ -70,9 +70,9 @@ questions:
   show_if: cloudprovider=amazonec2
   group: "Nodepool controlplane"
 - variable: nodepools.1.quantity
-  label: "ControlPlane Instance Type"
+  label: "Number of instance"
   default: 1
-  description: "Numbers of instances"
+  description: 
   type: enum
   required: true
   options:
@@ -82,9 +82,9 @@ questions:
   show_if: cloudprovider=amazonec2
   group: "Nodepool workers"
 - variable: nodepools.1.instanceType
-  label: "Workers Instance Type"
+  label: "AWS Instance Type"
   default: t3a.medium
-  description: "Instance type of workers"
+  description:
   type: enum
   required: true
   options:
