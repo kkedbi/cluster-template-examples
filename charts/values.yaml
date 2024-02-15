@@ -1,21 +1,19 @@
 # cluster specific values
 cluster:
   # specify cluster name
-  name: template-rke2
+  name: dbiservices-template-rke2-ec2
 
   # specify cluster labels
-  labels: {}
-
+  labels: 
+    rke2template: 'dbiservices-template-rke2-ec2' 
   # specify cluster annotations
   annotations: {}
 
-# specify cloud credential secret name, do not need to be provided if using custom driver
-cloudCredentialSecretName: ""
+cloudprovider: amazonec2
 
-# specify cloud provider, options are amazonec2, digitalocean, azure, vsphere or custom
-cloudprovider: "digitalocean"
-
-kubernetesVersion: ""
+# enable monitoring
+monitoring:
+  enabled: false
 
 # general RKE options
 rke:
@@ -27,16 +25,127 @@ rke:
   # specify cacert of local access endpoint
   # caCerts: ""
 
-# specify user principal ids to be assiged as cluster members
-# clusterMembers:
-# - principalName: "local://u-z8zl5"
-#   roleTemplateName: "cluster-member"
 
-# enable monitoring
-monitoring:
-  enabled: false
-  # specify which version to install, can be semver range. If version is empty or is semver range, it will pick up the latest version.
-  # version: ""
-  # specify cutsom values set
-  # values:
-  #   foo: bar
+# Specify nodepool options. Can add multiple node groups, specify etcd, controlplane and worker roles.
+nodepools:
+  - etcd: true
+    controlplane: true
+    worker: false
+
+    # specify node labels
+    labels: {}
+    # specify node taints
+    taints: {}
+    # specify nodepool size
+    quantity: 1
+
+    # Pause node pool
+    paused: false
+  
+    # specify nodepool name
+    name: template-controlplane
+
+    # Disable SSL when sending requests
+    insecureTransport: false
+
+    # AWS region
+    region: eu-central-1
+    # AWS zone for instance (i.e. a,b,c,d,e)
+    zone: a
+
+    # AWS keypair to use
+    keypairName: ""
+
+    # Skip adding default rules to security groups
+    securityGroupReadonly: false
+
+    # File contents for sshKeyContents
+    sshKeyContents: ""
+
+    # AWS VPC id
+    vpcId: "vpc-07ee607b6d4d9f2d5"
+
+    # AWS VPC subnet id
+    subnetId: "subnet-0791d41f2cbaca6ef"
+
+    # Whether to create `rancher-node` security group. If false, can provide with existing security group
+    createSecurityGroup: true
+    # createSecurityGroup: false
+    # securityGroups: []
+
+    # Only use a private IP address
+    privateAddressOnly: true
+
+    # Set this flag to enable CloudWatch monitoring
+    monitoring: false
+
+    # Set retry count for recoverable failures (use -1 to disable)
+    retries: 5
+    # AWS root disk size (in GB)
+    rootSize: 16
+
+    # Set the name of the ssh user
+    sshUser: ubuntu
+    # Amazon EBS volume type
+    volumeType: gp2
+
+  - etcd: false
+    controlplane: false
+    worker: true
+
+    # specify node labels
+    labels: {}
+    # specify node taints
+    taints: {}
+    # specify nodepool size
+    quantity: 2
+
+    # Pause node pool
+    paused: false
+  
+    # specify nodepool name
+    name: template-workers
+
+    # Disable SSL when sending requests
+    insecureTransport: false
+
+    # AWS region
+    region: eu-central-1
+    # AWS zone for instance (i.e. a,b,c,d,e)
+    zone: a
+
+    # AWS keypair to use
+    keypairName: ""
+
+    # Skip adding default rules to security groups
+    securityGroupReadonly: false
+
+    # File contents for sshKeyContents
+    sshKeyContents: ""
+
+    # AWS VPC id
+    vpcId: "vpc-07ee607b6d4d9f2d5"
+
+    # AWS VPC subnet id
+    subnetId: "subnet-0791d41f2cbaca6ef"
+
+    # Whether to create `rancher-node` security group. If false, can provide with existing security group
+    createSecurityGroup: true
+    # createSecurityGroup: false
+    # securityGroups: []
+
+    # Only use a private IP address
+    privateAddressOnly: true
+
+    # Set this flag to enable CloudWatch monitoring
+    monitoring: false
+
+    # Set retry count for recoverable failures (use -1 to disable)
+    retries: 5
+    # AWS root disk size (in GB)
+    rootSize: 16
+
+    # Set the name of the ssh user
+    sshUser: ubuntu
+    # Amazon EBS volume type
+    volumeType: gp2
