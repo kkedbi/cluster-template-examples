@@ -36,7 +36,7 @@ spec:
       etcdRole: {{ $nodepool.etcd }}
       workerRole: {{ $nodepool.worker }}
       quantity: {{ $nodepool.quantity }}
-      name: {{ $nodepool.name }}
+      name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       machineConfigRef:
         {{- if eq $.Values.cloudprovider "amazonec2" }}
         kind: Amazonec2Config
@@ -49,7 +49,7 @@ spec:
         {{- else if eq $.Values.cloudprovider "azure" }}
         kind: AzureConfig
         {{- end}}
-        name: {{ $nodepool.name }}
+        name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       paused: {{ $nodepool.paused }}
       displayName: {{ $nodepool.displayName }}
       {{- if $nodepool.rollingUpdate }}
@@ -73,7 +73,7 @@ spec:
       etcdRole: {{ $nodepool.etcd }}
       workerRole: {{ $nodepool.worker }}
       quantity: {{ $nodepool.quantity }}
-      name: {{ $nodepool.name }}
+      name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       machineConfigRef:
         {{- if eq $.Values.cloudprovider "amazonec2" }}
         kind: Amazonec2Config
@@ -86,7 +86,7 @@ spec:
         {{- else if eq $.Values.cloudprovider "azure" }}
         kind: AzureConfig
         {{- end}}
-        name: {{ $nodepool.name }}
+        name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
       paused: {{ $nodepool.paused }}
       displayName: {{ $nodepool.displayName }}
       {{- if $nodepool.rollingUpdate }}
@@ -114,7 +114,9 @@ spec:
       # Cluster Domain (default: "cluster.local")
       # cluster-domain: ""
       # CNI Plugin to deploy, one of none, canal, cilium (default: "canal")
-      cni: calico
+      {{- if .Values.kubernetesVersion }}
+      cni: {{ .Values.rke.machineGlobalConfig.cni }}
+      {{- end }}
       # Do not deploy packaged components and delete any deployed components (valid items: rke2-coredns, rke2-ingress-nginx, rke2-kube-proxy, rke2-metrics-server)
       # disable: false
       # Disable automatic etcd snapshots

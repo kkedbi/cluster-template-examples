@@ -1,15 +1,15 @@
 apiVersion: v1
 entries:
-  cluster-template:
+  dbiservices-template-ec2:
   - annotations:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2022-02-25T15:54:51.604663-08:00"
-    description: Cluster template for rke2
-    digest: d372363c814ac79e7d1f4b877e9b47ec39eaf3fde5a70137a0074dfa70e3dd2c
-    name: cluster-template
+    created: "2024-02-22T09:41:41.040469+01:00"
+    description: Cluster template for amazon ec2 rke2
+    digest: f7a7e16f13fd1e78efd55242b8533868f038d06fcd4dc1b5f2bfeab180d60398
+    name: dbiservices-template-ec2
     urls:
-    - cluster-template-0.0.1.tgz
+    - dbiservices-template-ec2-0.0.1.tgz
     version: 0.0.1
-generated: "2022-02-25T15:54:51.600996-08:00"
+generated: "2024-02-22T09:41:41.039857+01:00"

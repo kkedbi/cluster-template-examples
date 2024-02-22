@@ -3,7 +3,7 @@
 apiVersion: rke-machine-config.cattle.io/v1
 kind: Amazonec2Config
 metadata:
-  name: {{ $nodepool.name }}
+  name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
   namespace: fleet-default
 {{- if $nodepool.ami }}
 ami: {{ $nodepool.ami }}
@@ -60,10 +60,10 @@ region: {{ $nodepool.region }}
 requestSpotInstance: {{ $nodepool.requestSpotInstance }}
 {{- end }}
 {{- if $nodepool.retries }}
-retries: {{ $nodepool.retries }}
+retries: {{ quote $nodepool.retries }}
 {{- end }}
 {{- if $nodepool.rootSize }}
-rootSize: {{ $nodepool.rootSize }}
+retries: {{ quote $nodepool.rootSize }}
 {{- end }}
 securityGroup:
 {{- if $nodepool.createSecurityGroup }}
@@ -78,7 +78,7 @@ securityGroupReadonly: {{ $nodepool.securityGroupReadonly }}
 sessionToken: {{ $nodepool.sessionToken }}
 {{- end }}
 {{- if $nodepool.spotPrice }}
-spotPrice: {{ $nodepool.spotPrice }}
+retries: {{ quote $nodepool.spotPrice }}
 {{- end }}
 {{- if $nodepool.sshKeyContents }}
 sshKeyContents: {{ $nodepool.sshKeyContents }}
@@ -117,7 +117,7 @@ zone: {{ $nodepool.zone }}
 apiVersion: rke-machine-config.cattle.io/v1
 kind: Amazonec2Config
 metadata:
-  name: {{ $nodepool.name }}
+  name: {{ $.Values.cluster.name }}-{{ $nodepool.name }}
   namespace: fleet-default
 {{- if $nodepool.ami }}
 ami: {{ $nodepool.ami }}
@@ -174,10 +174,10 @@ region: {{ $nodepool.region }}
 requestSpotInstance: {{ $nodepool.requestSpotInstance }}
 {{- end }}
 {{- if $nodepool.retries }}
-retries: {{ $nodepool.retries }}
+retries: {{ quote $nodepool.retries }}
 {{- end }}
 {{- if $nodepool.rootSize }}
-rootSize: {{ $nodepool.rootSize }}
+retries: {{ quote $nodepool.rootSize }}
 {{- end }}
 {{- if $nodepool.createSecurityGroup }}
 securityGroup:
@@ -193,7 +193,7 @@ securityGroupReadonly: {{ $nodepool.securityGroupReadonly }}
 sessionToken: {{ $nodepool.sessionToken }}
 {{- end }}
 {{- if $nodepool.spotPrice }}
-spotPrice: {{ $nodepool.spotPrice }}
+retries: {{ quote $nodepool.spotPrice }}
 {{- end }}
 {{- if $nodepool.sshKeyContents }}
 sshKeyContents: {{ $nodepool.sshKeyContents }}
