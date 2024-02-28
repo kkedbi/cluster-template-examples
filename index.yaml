@@ -1,27 +1,27 @@
 apiVersion: v1
 entries:
-  dbiservices-template-ec2-clusterrole-lookup:
+  dbiservices-clusterrole-lookup:
   - annotations:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2024-02-28T14:50:43.542751+01:00"
-    description: Cluster template for amazon ec2 rke2
-    digest: e46944b2a995508e214e213425a3445afc9b738ebf04c3b6f5d5ad8ceae72c8f
-    name: dbiservices-template-ec2-clusterrole-lookup
+    created: "2024-02-28T15:32:01.624418+01:00"
+    description: Cluster template that use helm lookup to fetch the clustername
+    digest: 4de477317579608e3e287f9c86c2af18b9134fd1ab4618a657f034cd98b8a743
+    name: dbiservices-clusterrole-lookup
     urls:
-    - dbiservices-template-ec2-clusterrole-lookup-0.0.1.tgz
+    - dbiservices-clusterrole-lookup-0.0.1.tgz
     version: 0.0.1
-  dbiservices-template-ec2-mgmtclustername:
+  dbiservices-clusterrole-mgmtclustername:
   - annotations:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2024-02-28T14:50:43.543114+01:00"
-    description: Cluster template for amazon ec2 rke2
-    digest: c7178289b12715ac466072372c4b0c2beb35f8d10c68e0757fae0d301501fcdd
-    name: dbiservices-template-ec2-mgmtclustername
+    created: "2024-02-28T15:32:01.62485+01:00"
+    description: Cluster template that force the mgmt cluster name
+    digest: 2e0af264be5aeaace0329f18c7a21bd63dfe39454e095bf89fee2c359350f048
+    name: dbiservices-clusterrole-mgmtclustername
     urls:
-    - dbiservices-template-ec2-mgmtclustername-0.0.1.tgz
+    - dbiservices-clusterrole-mgmtclustername-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-28T14:50:43.542297+01:00"
+generated: "2024-02-28T15:32:01.623738+01:00"

@@ -1,6 +1,6 @@
 apiVersion: v1
-name: dbiservices-template-ec2-mgmtclustername
-description: Cluster template for amazon ec2 rke2 
+name: dbiservices-clusterrole-mgmtclustername
+description: Cluster template that force the mgmt cluster name
 version: 0.0.1
 annotations:
   catalog.cattle.io/type: cluster-template

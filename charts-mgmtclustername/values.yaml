@@ -15,6 +15,12 @@ cloudprovider: amazonec2
 monitoring:
   enabled: true
 
+# clusterMembers:
+# - principalName: "local://"
+#   roleTemplateName: "cluster-owner"
+# - principalName: "github_team://"
+#   roleTemplateName: "cluster-member"
+
 # general RKE options
 rke:
   # enable local auth endpoint
