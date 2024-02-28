@@ -1,0 +1,153 @@
+# cluster specific values
+cluster:
+  # specify cluster name
+  name: dbiservices-template-rke2-ec2
+
+  # specify cluster labels
+  labels: 
+    rke2template: 'dbiservices-template-rke2-ec2' 
+  # specify cluster annotations
+  annotations: {}
+
+cloudprovider: amazonec2
+
+# enable monitoring
+monitoring:
+  enabled: true
+
+# general RKE options
+rke:
+  # enable local auth endpoint
+  localClusterAuthEndpoint:
+    enabled: false  
+  # specify fqdn of local access endpoint
+  # fqdn: foo.bar.example
+  # specify cacert of local access endpoint
+  # caCerts: ""
+
+  # machineGlobalConfig:
+  #   cni: canal
+
+# Specify nodepool options. Can add multiple node groups, specify etcd, controlplane and worker roles.
+nodepools:
+  - etcd: true
+    controlplane: true
+    worker: false
+
+    # specify node labels
+    labels: {}
+    # specify node taints
+    taints: {}
+    # specify nodepool size
+    # quantity: 1
+
+    # Pause node pool
+    paused: false
+  
+    # specify nodepool name
+    name: template-controlplane
+
+    # Disable SSL when sending requests
+    insecureTransport: false
+
+    # AWS region
+    region: eu-central-1
+    # AWS zone for instance (i.e. a,b,c,d,e)
+    zone: a
+
+    # AWS keypair to use
+    keypairName: ""
+
+    # Skip adding default rules to security groups
+    securityGroupReadonly: false
+
+    # File contents for sshKeyContents
+    sshKeyContents: ""
+
+    # AWS VPC id
+    vpcId: ""
+
+    # AWS VPC subnet id
+    subnetId: ""
+
+    # Whether to create `rancher-node` security group. If false, can provide with existing security group
+    createSecurityGroup: true
+    # createSecurityGroup: false
+    # securityGroups: []
+
+    # Only use a private IP address
+    privateAddressOnly: true
+
+    # Set this flag to enable CloudWatch monitoring
+    monitoring: false
+
+    # Set retry count for recoverable failures (use -1 to disable)
+    retries: 5
+    # AWS root disk size (in GB)
+    rootSize: 16
+
+    # Set the name of the ssh user
+    sshUser: ubuntu
+    # Amazon EBS volume type
+    volumeType: gp2
+
+  - etcd: false
+    controlplane: false
+    worker: true
+
+    # specify node labels
+    labels: {}
+    # specify node taints
+    taints: {}
+    # specify nodepool size
+    quantity: 2
+
+    # Pause node pool
+    paused: false
+  
+    # specify nodepool name
+    name: template-workers
+
+    # Disable SSL when sending requests
+    insecureTransport: false
+
+    # AWS region
+    region: eu-central-1
+    # AWS zone for instance (i.e. a,b,c,d,e)
+    zone: a
+
+    # AWS keypair to use
+    keypairName: ""
+
+    # Skip adding default rules to security groups
+    securityGroupReadonly: false
+
+    # File contents for sshKeyContents
+    sshKeyContents: ""
+
+    # AWS VPC id
+    vpcId: ""
+
+    # AWS VPC subnet id
+    subnetId: ""
+
+    # Whether to create `rancher-node` security group. If false, can provide with existing security group
+    createSecurityGroup: true
+    # createSecurityGroup: false
+    # securityGroups: []
+
+    # Only use a private IP address
+    privateAddressOnly: true
+
+    # Set this flag to enable CloudWatch monitoring
+    monitoring: false
+
+    # Set retry count for recoverable failures (use -1 to disable)
+    retries: 5
+    # AWS root disk size (in GB)
+    rootSize: 16
+
+    # Set the name of the ssh user
+    sshUser: ubuntu
+    # Amazon EBS volume type
+    volumeType: gp2

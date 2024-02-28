@@ -1,15 +1,27 @@
 apiVersion: v1
 entries:
-  dbiservices-template-ec2:
+  dbiservices-template-ec2-clusterrole-lookup:
   - annotations:
       catalog.cattle.io/namespace: fleet-default
       catalog.cattle.io/type: cluster-template
     apiVersion: v1
-    created: "2024-02-22T09:41:41.040469+01:00"
+    created: "2024-02-28T14:50:43.542751+01:00"
     description: Cluster template for amazon ec2 rke2
-    digest: f7a7e16f13fd1e78efd55242b8533868f038d06fcd4dc1b5f2bfeab180d60398
-    name: dbiservices-template-ec2
+    digest: e46944b2a995508e214e213425a3445afc9b738ebf04c3b6f5d5ad8ceae72c8f
+    name: dbiservices-template-ec2-clusterrole-lookup
     urls:
-    - dbiservices-template-ec2-0.0.1.tgz
+    - dbiservices-template-ec2-clusterrole-lookup-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-22T09:41:41.039857+01:00"
+  dbiservices-template-ec2-mgmtclustername:
+  - annotations:
+      catalog.cattle.io/namespace: fleet-default
+      catalog.cattle.io/type: cluster-template
+    apiVersion: v1
+    created: "2024-02-28T14:50:43.543114+01:00"
+    description: Cluster template for amazon ec2 rke2
+    digest: c7178289b12715ac466072372c4b0c2beb35f8d10c68e0757fae0d301501fcdd
+    name: dbiservices-template-ec2-mgmtclustername
+    urls:
+    - dbiservices-template-ec2-mgmtclustername-0.0.1.tgz
+    version: 0.0.1
+generated: "2024-02-28T14:50:43.542297+01:00"

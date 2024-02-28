@@ -1,0 +1,118 @@
+questions:
+- variable: cluster.name
+  default: mycluster
+  description: "Specify the name of the cluster"
+  label: "Cluster Name"
+  required: true
+  type: string
+  group: "General"
+- variable: cloudCredentialSecretName
+  description: "CloudCredentialName for provisioning cluster"
+  label: "CloudCredential Name"
+  type: cloudcredential
+  required: true
+  group: "General"
+- variable: kubernetesVersion
+  default: v1.27.10+rke2r1
+  description: "Specify Kubernetes version"
+  label: "Kubernetes Version"
+  type: enum
+  required: true
+  options:
+  - v1.27.10+rke2r1
+  - v1.26.13+rke2r1
+  - v1.25.16+rke2r1
+  - v1.24.17+rke2r1
+  group: "General"
+- variable: rke.machineGlobalConfig.cni
+  default: canal
+  description: "Specify Kubernetes Container Network"
+  label: "Container Network"
+  type: enum
+  required: true
+  options:
+  - canal
+  - calico
+  group: "General"
+- variable: rke.localClusterAuthEndpoint.enabled
+  default: false
+  label: "Local Auth endpoint"
+  description: "Enable local auth access endpoint"
+  type: boolean
+  group: "Auth Access Endpoint"
+  show_subquestion_if: true
+  subquestions:
+  - variable: rke.localClusterAuthEndpoint.fqdn
+    description: "Local auth access endpoint FQDN"
+    label: "Auth Endpoint FQDN"
+    type: hostname
+    group: "Auth Access Endpoint"
+  - variable: rke.localClusterAuthEndpoint.caCerts
+    label: "Auth Endpoint Cacerts"
+    description: "Local auth access endpoint CACerts"
+    type: multiline
+    group: "Auth Access Endpoint"
+# EC2 nodepool 0
+- variable: nodepools.0.name
+  default: template-controlplane
+  description: "Specify the nodepool name"
+  label: "Name"
+  required: true
+  type: string
+  group: "Nodepool controlplane"
+- variable: nodepools.0.quantity
+  label: "Number of instance"
+  default: 1
+  description:
+  type: enum
+  required: true
+  options:
+  - 1
+  - 2
+  - 3
+  show_if: cloudprovider=amazonec2
+  group: "Nodepool controlplane"
+- variable: nodepools.0.instanceType
+  label: "AWS Instance Type"
+  default: t3a.medium
+  description: 
+  type: enum
+  required: true
+  options:
+  - t3a.medium
+  - t3a.large
+  - t3a.xlarge
+  show_if: cloudprovider=amazonec2
+  group: "Nodepool controlplane"
+# EC2 nodepool 1
+- variable: nodepools.1.name
+  default: template-workers
+  description: "Specify the nodepool name"
+  label: "Name"
+  required: true
+  type: string
+  group: "Nodepool workers"
+- variable: nodepools.1.quantity
+  label: "Number of instance"
+  default: 1
+  description: 
+  type: enum
+  required: true
+  options:
+  - 1
+  - 2
+  - 3
+  show_if: cloudprovider=amazonec2
+  group: "Nodepool workers"
+- variable: nodepools.1.instanceType
+  label: "AWS Instance Type"
+  default: t3a.medium
+  description:
+  type: enum
+  required: true
+  options:
+  - t3a.medium
+  - t3a.large
+  - t3a.xlarge
+  show_if: cloudprovider=amazonec2
+  group: "Nodepool workers"
