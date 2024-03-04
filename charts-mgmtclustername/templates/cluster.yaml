@@ -58,6 +58,14 @@ spec:
         maxUnavailable: {{ $nodepool.rollingUpdate.maxUnavailable }}
         maxSurge: {{ $nodepool.rollingUpdate.maxSurge }}
       {{- end }}
+      {{- if $nodepool.labels }}
+      labels:
+{{ toYaml $nodepool.labels | indent 8 }}
+      {{- end }}
+      {{- if $nodepool.taints }}
+      taints:
+{{ toYaml $nodepool.taints | indent 8 }}
+      {{- end }}
       {{- if $nodepool.machineDeploymentLabels }}
       machineDeploymentLabels:
 {{ toYaml $nodepool.machineDeploymentLabels | indent 8 }}
@@ -94,6 +102,14 @@ spec:
       rollingUpdate:
         maxUnavailable: {{ $nodepool.rollingUpdate.maxUnavailable }}
         maxSurge: {{ $nodepool.rollingUpdate.maxSurge }}
+      {{- end }}
+      {{- if $nodepool.labels }}
+      labels:
+{{ toYaml $nodepool.labels | indent 8 }}
+      {{- end }}
+      {{- if $nodepool.taints }}
+      taints:
+{{ toYaml $nodepool.taints | indent 8 }}
       {{- end }}
       {{- if $nodepool.machineDeploymentLabels }}
       machineDeploymentLabels:
